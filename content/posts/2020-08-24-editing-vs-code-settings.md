@@ -1,15 +1,15 @@
 ---
-template: post
-title: Editing VS code settings
-slug: editing-vs-code-settings
+template: "post"
+title: "Editing VS code settings"
+slug: "editing-vs-code-settings"
 draft: false
 date: 2019-10-14T07:00:00.000Z
-description: A quick tutorial showing the three different ways of maintaining
-	your VS code settings.
+description: "A quick tutorial showing the three different ways of maintaining
+	your VS code settings."
 tags:
-  - vscode
-  - visual studio code
-category: devops
+  - "vscode"
+  - "visual studio code"
+category: "Devops"
 ---
 
 Vscode offers three levels for editing settings:
