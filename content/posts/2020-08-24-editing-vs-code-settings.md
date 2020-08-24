@@ -7,8 +7,8 @@ date: 2019-10-14T07:00:00.000Z
 description: A quick tutorial showing the three different ways of maintaining
 	your VS code settings.
 tags:
-	- vscode
-	- visual studio code
+  - vscode
+  - visual studio code
 category: devops
 ---
 
