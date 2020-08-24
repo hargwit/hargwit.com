@@ -1,11 +1,10 @@
 ---
 template: page
 title: About me
-socialImage: /media/image-2.jpg
+socialImage: photo.jpg
 slug: about
 draft: false
 ---
-
 
 # Hi, I'm Harry
 
