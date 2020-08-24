@@ -8,7 +8,8 @@ description: A quick tutorial showing the three different ways of maintaining
   your VS code settings.
 category: Devops
 tags:
-  - '"vscode" "visual studio code"'
+	- vscode
+	- visual studio code
 ---
 
 Vscode offers three levels for editing settings:
