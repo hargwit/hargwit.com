@@ -1,6 +1,6 @@
 ---
 template: "post"
-title: "Editing VS code settings"
+title: Editing VS code settings
 slug: "editing-vs-code-settings"
 draft: false
 date: 2019-10-14T07:00:00.000Z
