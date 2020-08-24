@@ -1,13 +1,35 @@
 ---
-title: "About me"
-template: "page"
-socialImage: "/media/image-2.jpg"
+template: page
+title: About me
+socialImage: /media/image-2.jpg
+slug: about
+draft: false
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](/media/image-2.jpg)
+# Hi, I'm Harry
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+I am a full stack software developer. My speciality is creating enterprise
+software solutions and my preferred languages are Javascript (especially React)
+and Java. I don't just write code though, I build and maintain CI/CD pipelines,
+create and maintain automated testing suites and enjoy providing mentorship for
+my colleagues.
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+Across my career I have become proficient in a number of technologies including
+(but not limited to):
+
+- Javascript
+- Java
+- React
+- Golang
+- Docker
+- Cypress
+- Jenkins
+- Mongo
+
+## Recent projects
+
+During lockdown here in the UK, I created an app so I could play _Names in a
+Hat_ over video call with my family. It is a simple React application backed by
+[Google firestore](https://firebase.google.com/docs/firestore/). Head over to
+[namesinahat.co.uk](https://namesinahat.co.uk/) to check it out!
