@@ -2,7 +2,7 @@
 template: post
 title: Editing VS code settings
 slug: editing-vs-code-settings
-draft: true
+draft: false
 date: 2019-10-14T07:00:00.000Z
 description: A quick tutorial showing the three different ways of maintaining
   your VS code settings.
@@ -10,11 +10,12 @@ category: Devops
 tags:
   - '"vscode" "visual studio code"'
 ---
+
 Vscode offers three levels for editing settings:
 
-* Globally
-* Folder
-* Workspace
+- Globally
+- Folder
+- Workspace
 
 Each level has a couple of methods.
 
@@ -32,9 +33,9 @@ followed by selecting the user tab at the top of the page. See below.
 You can also alter your global settings by editing the global `settings.json`
 file. This file is usually in one of these locations:
 
-* Windows: `%APPDATA%\Code\User\settings.json`
-* MacOs: `$HOME/Library/Application Support/Code/User/settings.json`
-* Linux: `$HOME/.config/Code/User/settings.json`
+- Windows: `%APPDATA%\Code\User\settings.json`
+- MacOs: `$HOME/Library/Application Support/Code/User/settings.json`
+- Linux: `$HOME/.config/Code/User/settings.json`
 
 A quicker way of editing this is to use the vscode command palette which can be
 accessed using `Ctrl Shift P` (or `Cmd Shift P` on a Mac). Type in
