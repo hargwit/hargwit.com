@@ -97,7 +97,7 @@ First let's go to GitHub and create a new repository, call it `my-app` and hit
 `https://github.com/gitname/my-app.git` - click the copy to clipboard button
 just to the right of this (circled in red below).
 
-![github quick setup page](./images/github-quick-setup.png)
+![github quick setup page](/media/github-quick-setup.png)
 
 Next, return to your terminal and make sure you are in the root folder of your
 app. Now enter the following command:
@@ -162,7 +162,7 @@ start running deployment scripts.
 When it has finished deploying (the url will go green like below), click the
 link - your site is now live.
 
-![site deployed to netlify](./images/deployed-site.png)
+![site deployed to netlify](/media/deployed-site.png)
 
 You can easily change the name of the site by going to `Site settings` and
 hitting `Change site name`. This will change the url of the site to
