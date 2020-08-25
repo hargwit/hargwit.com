@@ -2,7 +2,7 @@
 template: post
 title: How to create a React app and deploy it to Netlify
 slug: create-a-react-app-and-deploy-to-netlify
-draft: true
+draft: false
 date: 2019-09-23T08:00:23.406Z
 description: A quick tutorial showing you how to create a React app, add it to
   source control and deploy it to Netlify.
@@ -67,7 +67,7 @@ npx create-react-app my-app
 You should see the following message when this has finished creating your
 project:
 
-![create react app in action](./images/create-react-app-success.png)
+![Output of the create react app command](/media/create-react-app-success.png)
 
 This is telling us that if we want to develop our app locally we run the
 following commands:
@@ -79,8 +79,8 @@ npm start
 
 Which have the following effects:
 
-- `cd my-app` - change directory into the root folder of the app
-- `npm start` - host the app at [localhost:3000](http://localhost:3000). As we
+* `cd my-app` - change directory into the root folder of the app
+* `npm start` - host the app at [localhost:3000](http://localhost:3000). As we
   develop our app we can go to this url to see the changes we've made.
 
 # Adding to Source Control
