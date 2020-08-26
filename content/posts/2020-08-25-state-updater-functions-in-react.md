@@ -1,10 +1,11 @@
 ---
 template: post
-title: State updater functions in React
-slug: react-state-updater-functions
-draft: true
+title: State update functions in React
+slug: react-state-update-functions
+draft: false
 date: 2019-09-09T08:00:00.000Z
-description: How to avoid stale state problems using state updater functions
+description: Whenever you update state based on previous state, use an update
+  function to avoid stale state problems.
 category: React
 tags:
   - React
@@ -52,9 +53,7 @@ simply calls `setState` on the component which, you guessed it, increments the
 All straightforward right? What you might not have noticed though is that we
 have produced a difficult to trace and inconsistent bug.
 
-Let's checkout the
-[React docs](https://reactjs.org/docs/react-component.html#setstate) for
-`setState`:
+Let's checkout the [React docs](https://reactjs.org/docs/react-component.html#setstate) for `setState`:
 
 > "Think of `setState` as a request rather than an immediate command. For better
 > perceived performance, React may delay it, and then update several components
@@ -62,8 +61,8 @@ Let's checkout the
 
 This means that updating state in this way is an asynchronous process.
 
-What does that mean for us? What if we were to quickly click the button twice so
-that the two `setState` operations get batched together into the same cycle? 
+What does that mean for us? Well, what if we were to quickly click the button twice so
+that the two `setState` operations get batched together into the same cycle?
 
 We would find that the second call of `increment` would execute the line `const { count } = this.state`
 **before** the state has been updated by the first click. The second execution
@@ -86,12 +85,13 @@ test("Counter counts accurately", () => {
   fireEvent.click(screen.getByText(/Increment/i));
   expect(screen.getByLabelText(/Count/i)).toHaveTextContent(2);
 });
-
 ```
 
 We could run this test on a test environment in a CI pipeline and, depending on
 the state of the environment and number of other tests running, this test might
-run at different speeds. As a result, sometimes the `setState` calls might get
+run at different speeds. 
+
+As a result, sometimes the `setState` calls might get
 batched and sometimes they might not. Hence occasionally the test will fail with
 no indication as to why - this might lead a developer to incorrectly believe the
 test to be flaky when in fact it is highlighting a bug in the code!
@@ -101,42 +101,41 @@ obtaining `count` from state and setting the new state to better illustrate the
 issue.
 
 ```jsx
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      count: 0,
-    }
+      count: 0
+    };
   }
 
   increment() {
-    const { count } = this.state
+    const { count } = this.state;
     setTimeout(() => {
-      this.setState({ count: count + 1 })
-    }, 1000)
+      this.setState({ count: count + 1 });
+    }, 1000);
   }
-
   render() {
-    const { count } = this.state
+    const { count } = this.state;
     return (
-      <div>
-        <p>Count: {count}</p>
+      <>
+        <p>
+          <label id="count-label">
+            Count: <span aria-label="count-label">{count}</span>
+          </label>
+        </p>
         <button onClick={() => this.increment()}>Increment</button>
-      </div>
-    )
+      </>
+    );
   }
 }
 ```
 
 We have told `setTimeout` to increment our state after a 1 second delay. Go
-ahead and give the counter below a go now. Click it twice within 1 second. We
+ahead and checkout this [codesandbox](https://codesandbox.io/s/buggy-seovi?file=/src/Counter.js). Click the button twice within 1 second. We
 would expect the state to increment by 2 but instead what we see is the state
 only increment by one. This is because the two executions of `increment`
 obtained the same value for `count` and so both set the state to the same value.
-
-import { SlowBuggy } from './code/components'
-
-<SlowBuggy />
 
 A bug! And an inconsistent bug at that as the code appears to work correctly if
 the button is clicked more slowly.
@@ -159,26 +158,34 @@ In our case, the next state of the count variable only depends on the previous
 so we won't use props. Let's put this in our code.
 
 ```jsx
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      count: 0,
-    }
+      count: 0
+    };
   }
 
   increment() {
-    this.setState((state) => ({ count: state.count + 1 }))
+    setTimeout(() => {
+      this.setState((previousState) => ({
+        count: previousState.count + 1
+      }));
+    }, 1000);
   }
 
   render() {
-    const { count } = this.state
+    const { count } = this.state;
     return (
-      <div>
-        <p>Count: {count}</p>
+      <>
+        <p>
+          <label id="count-label">
+            Count: <span aria-label="count-label">{count}</span>
+          </label>
+        </p>
         <button onClick={() => this.increment()}>Increment</button>
-      </div>
-    )
+      </>
+    );
   }
 }
 ```
@@ -186,11 +193,11 @@ class App extends React.Component {
 Now, when `setState` is executed, we are guaranteed to have the current state
 passed to our updater function, even when `setState` executions get batched. As
 a result we never update `count` based on stale state and we have fixed the bug!
-Give it a go below, the state will always update to the correct value.
+Try this [codesandbox](https://codesandbox.io/s/fixed-5lqjp?file=/src/Counter.js) for the final fixed component.
 
-import { Fixed } from './code/components'
+To avoid this, follow this general rule:
 
-<Fixed />
+> **Whenever you update state based on previous state, use an update function to avoid stale state problems.**
 
 # Conclusion
 
