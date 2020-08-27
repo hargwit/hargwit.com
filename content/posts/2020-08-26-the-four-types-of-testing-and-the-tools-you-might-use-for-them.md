@@ -1,12 +1,11 @@
 ---
 template: post
-title: The four types of testing (and the tools you might use for them)
+title: The four types of testing and when to use them
 slug: the-four-types-of-testing
 draft: true
 date: 2020-08-26T07:13:03.202Z
-description: There a four types of testing, here I explain how they work, what
-  you might use them for and some tools you could use when testing a React
-  application
+description: "There a four types of testing, here I explain how they work, when
+  to use them and even give some examples of tools you can use "
 category: Testing
 tags:
   - React
@@ -36,12 +35,18 @@ So you can see feedback time is essentially how long the test takes to run, and 
 
 ## Confidence
 
-Confidence is how confident the test makes us that the code is working.
+The confidence of a test is how confident that test makes us that the code is working.
 
 Imagine you are refactoring a function in the authentication flow of your app to store passwords as hashes rather than plain text. After implementing the changes, how confident are you that a user can still log in to your system? A test that covers the authentication flow makes it an absolute certainty and gives you confidence that the codebase isn't broken.
 
 Confidence is something we want to maximise.
 
-## Trade off
+# Static testing
 
-As a general rule, slower tests give you more confidence that your code is working.
+eslint etc
+
+# Trade off
+
+As a general rule, the more confidence a test gives us, the slower it is -there is a tradeoff between the two metrics. 
+
+We need to be careful and consider how important these metrics are when we write a new test. Is the new feature mission-critical (eg. authentication flow)? If so then we must be confident the code works - let's use an end to end test. If not (eg. user can add emoji to their username) then let's use something faster - unit test probably.
