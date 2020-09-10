@@ -43,7 +43,7 @@ Confidence is something we want to maximise.
 
 # Static testing
 
-Static testing, also called linting, is the process of running a program that will statically analyse code for errors. This is possible as many of the bugs you might create while writing code are very common and easy to recognise. 
+Static testing, also called linting, is the process of running a program that will statically analyse code for errors. This is possible as many of the bugs you might inadvertently create while writing code are very common and easy to recognise. 
 
 This includes silly mistakes like typos in variable names, forgotten brackets and mismatched types, to name a few. The linter can scan the code as you type, and raise a warning when it thinks you have made a mistake.
 
