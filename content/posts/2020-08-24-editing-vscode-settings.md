@@ -3,7 +3,7 @@ template: post
 title: Editing VSCode settings
 slug: editing-vs-code-settings
 draft: false
-date: 2019-10-15T07:00:56.493Z
+date: 2020-02-05T08:00:56.493Z
 description: A quick tutorial showing the three different ways of personalising
   your VS code settings.
 category: Devops
