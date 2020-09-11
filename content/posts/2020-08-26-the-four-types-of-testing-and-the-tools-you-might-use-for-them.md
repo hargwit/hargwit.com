@@ -2,8 +2,8 @@
 template: post
 title: The four types of testing and when to use them
 slug: the-four-types-of-testing
-draft: true
-date: 2020-08-26T07:13:03.202Z
+draft: false
+date: 2020-09-11T06:32:57.025Z
 description: There are four types of test. Here I explain how, and when, to use
   them, including example tools for a React application.
 category: Testing
@@ -11,10 +11,10 @@ tags:
   - React
   - testing
   - TDD
-  - unit tests
-  - integration tests
-  - end-to-end tests
-  - static tests
+  - unit testing
+  - integration testing
+  - end-to-end testing
+  - static testing
 ---
 There are four different types of test you can (and should) use when writing code:
 
@@ -73,7 +73,7 @@ We might test that a service method works correctly when its repositories are co
 
 Integration tests cover a lot more code and even check that the interfaces between the layers (eg. networks) aren't broken. They tend to be covering the use-cases of the application and this skyrockets the confidence they give us. After all, we are building the application to meet those use-cases.
 
-However, integration tests execute more code and can be slowed down by the interfaces between layers. This makes interfaces slower than their unit counterparts.
+However, integration tests execute more code and can be slowed down by the interfaces between layers. This makes integration tests slower than their unit counterparts.
 
 Use the same tools for integration tests as you did for unit testing - a combination of [jest](https://jestjs.io/) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro).
 
@@ -87,7 +87,7 @@ However, this confidence comes at a cost. There are no shortcuts here, the test 
 
 As a result, end-to-end tests should be reserved for mission critical features. These are features where a breakage makes the application useless for its primary use-cases. For example, login and sign up flows and payment gateways.
 
-Use [Cypress](https://cypress.io) combined with [`cypress-testing-library`](https://testing-library.com/docs/cypress-testing-library/intro) for end-to-end testing a React application. Cypress can be run in both CI pipelines as well as on your local dev machine making it a great option for TDD. `cypress-testing-library` is a Cypress port of `react-testing-library` meaning it will feel familiar due to your unit and integration tests.
+Use [Cypress](https://cypress.io) combined with [`cypress-testing-library`](https://testing-library.com/docs/cypress-testing-library/intro) for end-to-end testing a React application. Cypress can be run both in CI pipelines as well as on your local dev machine making it a great option for TDD. `cypress-testing-library` is a Cypress port of `react-testing-library` meaning it will feel familiar due to your unit and integration tests.
 
 # Trade off
 
@@ -97,3 +97,5 @@ We need to be careful and consider how important these metrics are when we write
 
 When in doubt, use integration tests, they provide the a lot of confidence and are nearly as fast as unit tests to run. Follow Kent C. Dodds advice:
 > Write tests, not too many, mostly integration
+
+Thanks for reading, get testing!
