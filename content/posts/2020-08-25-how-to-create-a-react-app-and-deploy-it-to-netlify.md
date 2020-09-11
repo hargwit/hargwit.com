@@ -3,7 +3,7 @@ template: post
 title: How to create a React app and deploy it to Netlify
 slug: create-a-react-app-and-deploy-to-netlify
 draft: false
-date: 2019-09-23T08:00:23.406Z
+date: 2019-11-13T09:00:23.406Z
 description: A quick tutorial showing you how to create a React app, add it to
   source control and deploy it to Netlify.
 category: Devops
