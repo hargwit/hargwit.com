@@ -49,7 +49,7 @@ This includes silly mistakes like typos in variable names, forgotten brackets an
 
 Static testing is the fastest type of testing, providing an almost instantaneous feedback time. However, it will only give you confidence that your code runs, not that your latest feature meets its requirements
 
-The most common static testing tool for javascript applications is `eslint`. `Eslint` is pluggable, meaning rule sets specific to your tech stack can be installed and plugged into the linter. You can also provide configuration to ignore some errors or force developers to use best practices.
+The most common static testing tool for javascript applications is `eslint`. `eslint` is pluggable, meaning rule sets specific to your tech stack can be installed and plugged into the linter. You can also provide configuration to ignore some errors or force developers to use best practices.
 
 # Unit testing
 
@@ -75,7 +75,7 @@ Integration tests cover a lot more code and even check that the interfaces betwe
 
 However, integration tests execute more code and can be slowed down by the interfaces between layers. This makes integration tests slower than their unit counterparts.
 
-Use the same tools for integration tests as you did for unit testing - a combination of [jest](https://jestjs.io/) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro).
+Use the same tools for integration tests as you did for unit testing - a combination of [`jest`](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro).
 
 # End to end tests
 
@@ -87,7 +87,7 @@ However, this confidence comes at a cost. There are no shortcuts here, the test 
 
 As a result, end-to-end tests should be reserved for mission critical features. These are features where a breakage makes the application useless for its primary use-cases. For example, login and sign up flows and payment gateways.
 
-Use [Cypress](https://cypress.io) combined with [`cypress-testing-library`](https://testing-library.com/docs/cypress-testing-library/intro) for end-to-end testing a React application. Cypress can be run both in CI pipelines as well as on your local dev machine making it a great option for TDD. `cypress-testing-library` is a Cypress port of `react-testing-library` meaning it will feel familiar due to your unit and integration tests.
+Use [`cypress`](https://cypress.io) combined with [`cypress-testing-library`](https://testing-library.com/docs/cypress-testing-library/intro) for end-to-end testing a React application. `cypress` can be run both in CI pipelines as well as on your local dev machine making it a great option for TDD. `cypress-testing-library` is a `cypress` port of `react-testing-library` meaning it will feel familiar due to your unit and integration tests.
 
 # Trade off
 
