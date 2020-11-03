@@ -95,7 +95,7 @@ As a general rule, the more confidence a test gives us, the slower it is - there
 
 We need to be careful and consider how important these metrics are when we write a new test. Is the new feature mission-critical (eg. authentication flow)? If so then we must be confident the code works - let's use an end to end test. If not (eg. user can add emoji to their username) then let's use something faster - a unit test probably.
 
-When in doubt, use integration tests, they provide the a lot of confidence and are nearly as fast as unit tests to run. Follow Kent C. Dodds advice:
+When in doubt, use integration tests, they provide a lot of confidence and are nearly as fast as unit tests to run. Follow Kent C. Dodds advice:
 > Write tests, not too many, mostly integration
 
 Thanks for reading, get testing!
