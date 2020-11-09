@@ -11,3 +11,11 @@ tags:
   - React
 ---
 hmmm
+
+```
+<Grid
+  container
+  component={MyComponent}
+  myProp={"forwarded on to MyComponent"}
+>
+```
