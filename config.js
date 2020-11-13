@@ -22,7 +22,7 @@ module.exports = {
   ],
   author: {
     name: 'Harry G. Withers',
-    photo: '/photo.jpg',
+    photo: 'photo.jpg',
     bio: `
     Harry G. Withers is a full stack software developer specialising
     in a number of technologies including Java, Javascript and ReactJs.
