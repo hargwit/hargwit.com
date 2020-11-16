@@ -17,7 +17,7 @@ Let's start by loosely defining an interface.
 
 An interface is essentially a contract; it describes a series of functions and their input and output types, without mentioning any specifics regarding how they work. Interfaces are about what rather than how.
 
-Let's explore a real-life example; say we are building a chat application. Our first feature might be to allow a user to create a new chat. When programming to an interface, we want to specify that this is possible, not how it is possible:
+Let's explore a real-life example; say we are building a chat application. Our first feature might be to allow a user to create a new chat. When programming to an interface, we want to specify what is possible, not how it is possible:
 
 ```
 interface ChatCreator {
