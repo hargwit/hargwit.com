@@ -1,6 +1,6 @@
 ---
 template: post
-title: The Root Component Pattern
+title: The root component pattern
 slug: root-components
 draft: false
 date: 2020-11-05T08:37:42.818Z
