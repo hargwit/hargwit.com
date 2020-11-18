@@ -6,7 +6,7 @@ draft: true
 date: 2020-11-16T08:11:24.379Z
 description: Programming to an interface is a surefire way to increase the value
   of your code. Let's explore how we can do this with typescript on a node
-  project.
+  project using the factory pattern.
 category: Node
 tags:
   - Typescript
@@ -66,5 +66,38 @@ const inmemChatRepositoryFactory = (): ChatRepository => {
 }
 ```
 
-This time, the repository stores the chats in an object rather than a database. Notice again, though, how the factory returns the `ChatRepository` interface. We are using Typescript again to guarantee that the implementation provides all functionality declared by the interface.
+This time, the repository stores the chats in an object rather than a database. Notice again, though, how the factory returns the `ChatRepository` interface. We are using Typescript to again guarantee that the implementation provides all functionality declared by the interface.
 
+# Usage
+
+When programming to an interface, any service that uses the repository must interact only with the interface. For example:
+
+```
+interface ChatUseCases {
+    create: (people: Person[], chatName: string) => Promise<Chat>
+}
+
+export const chatServiceFactory = ({ chatRepository }: { chatRepository: ChatRepository }): ChatUseCases => ({
+    create: (people, chatName) => chatRepository.create(chatFactory({ participants: people, name: chatName })),
+})
+```
+
+As we are now in the application layer of the system, every method on the service level interface is a use-case, hence `ChatUseCases`. Currently, we only have one use-case: create a chat from its participants and its name.
+
+We can see that the implementation of the `ChatUseCases`, the `chatService`, takes a `ChatRepository` as an argument. Notice that this is the repository interface and not one of our implementations. The service doesn't know or care which implementation it uses, so long as it can create a Chat in a repository. It doesn't care about *how*, only **what**. The service is therefore completely decoupled from the repository implementation.
+
+To convince you that this decoupling is highly beneficial, consider the alternative. Say we had allowed implementation details to leak from the repository layer into the service, we would then have Mongo specific code mixed in with our business logic. If we wanted later to swap out our database for say SQL or in-memory, we would need to rewrite our business logic in order to tear out the Mongo details. As a result, we would require more code changes and more testing to ensure the system still works, costing more time and money.
+
+Decoupling means that this change is as simple as passing a different implementation into the the `chatServiceFactory`. We can even go one step further and switch implementation based on a CLI flag or config property:
+
+```
+let chatRepository: ChatRepository
+
+if (inMem) {
+    chatRepository = inMemChatRepositoryFactory()
+} else {
+    chatRepository = mongoChatRepositoryFactory({ model: ChatModel })
+}
+
+const chatService = chatServiceFactory({ chatRepository })
+```
