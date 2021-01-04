@@ -2,7 +2,7 @@
 template: post
 title: Programming to an interface with typescript
 slug: programming-to-an-interface-with-typescript
-draft: true
+draft: false
 date: 2020-11-16T08:11:24.379Z
 description: Programming to an interface is a surefire way to increase the value
   of your code. Let's explore how we can do this with typescript on a node
@@ -21,7 +21,7 @@ This separation of **what** and *how*, of **interface** and *implementation*, al
 
 Let's explore a real-life example; say we are building a chat application and that our first feature is allowing a user to create a new chat. We will need to be able to persist chats, whether that means saving them to a database or writing them to a file, we don't care so long as we can save them somewhere.
 
-When programming to an interface, we want to specify that this is possible, not how it is possible:
+When programming to an interface, we want to specify **what** is possible, not *how* it is possible:
 
 ```
 interface ChatRepository {
@@ -58,15 +58,15 @@ const inmemChatRepositoryFactory = (): ChatRepository => {
     const chats = {}
 
     return {
-        create: (chat: Chat) => {
+        create: async (chat: Chat) => {
             chats[chat.id] = chats
-            return Promise.resolve(chat)
+            return chat
         },
     }
 }
 ```
 
-This time, the repository stores the chats in an object rather than a database. Notice again, though, how the factory returns the `ChatRepository` interface. We are using Typescript to again guarantee that the implementation provides all functionality declared by the interface.
+This time, the repository stores the chats in an object rather than a database. Notice again, though, how the factory returns the `ChatRepository` interface. Again, we are using Typescript to guarantee that the implementation provides all functionality declared by the interface.
 
 # Usage
 
@@ -84,7 +84,7 @@ export const chatServiceFactory = ({ chatRepository }: { chatRepository: ChatRep
 
 As we are now in the application layer of the system, every method on the service level interface is a use-case, hence `ChatUseCases`. Currently, we only have one use-case: create a chat from its participants and its name.
 
-We can see that the implementation of the `ChatUseCases`, the `chatService`, takes a `ChatRepository` as an argument. Notice that this is the repository interface and not one of our implementations. The service doesn't know or care which implementation it uses, so long as it can create a Chat in a repository. It doesn't care about *how*, only **what**. The service is therefore completely decoupled from the repository implementation.
+We can see that an implementation of the `ChatUseCases`, the `chatService`, takes a `ChatRepository` as an argument. Notice that this is the repository interface and not one of our implementations. The service doesn't know or care which implementation it uses, so long as it can create a Chat in a repository. It doesn't care about *how*, only **what**. The service is therefore completely decoupled from the repository implementation.
 
 To convince you that this decoupling is highly beneficial, consider the alternative. Say we had allowed implementation details to leak from the repository layer into the service, we would then have Mongo specific code mixed in with our business logic. If we wanted later to swap out our database for say SQL or in-memory, we would need to rewrite our business logic in order to tear out the Mongo details. As a result, we would require more code changes and more testing to ensure the system still works, costing more time and money.
 
@@ -101,3 +101,13 @@ if (inMem) {
 
 const chatService = chatServiceFactory({ chatRepository })
 ```
+
+# Conclusion
+
+Programming to an interface is an important technique in software development. It separates the declaration of **what** is possible from *how* it is possible. Decoupling these concerns makes the code easier to maintain and change and therefore makes the code more valuable.
+
+In Typescript, we can achieve this separation by declaring a type that defines the signatures for all of the functionality the code supports (**what**). Implementations (*how*) can be created by writing factory functions that return the type. Typescript will ensure that the returned implementation object perfectly matches the declared type.
+
+To use the interface, consumers declare the type as a dependency before using the methods accordingly.
+
+Thanks for reading!
