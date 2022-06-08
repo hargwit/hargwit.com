@@ -2,7 +2,7 @@
 template: post
 title: Naming jest mock functions
 slug: naming-jest-mock-functions
-draft: true
+draft: false
 date: 2022-06-08T11:03:07.882Z
 description: A quick tip to add more context to test failure messages!
 category: Testing
